@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "server": "node src/app/pages/api/users",
+    "dev": "next dev --turbopack --experimental-https",
+    "server": "node server/api/users",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

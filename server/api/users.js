@@ -1,8 +1,15 @@
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 const app = express();
+
+const options = {
+  key: fs.readFileSync('certificates/localhost-key.pem'),
+  cert: fs.readFileSync('certificates/localhost.pem')
+};
 
 app.use(express.json());
 
@@ -44,6 +51,13 @@ app.post('/api/users', async (req, res) => {
   }
 });
 
-app.listen(3500, () => {
-  console.log('Server is running on http://localhost:3000');
+const httpServer = app.listen(3500, () => {
+  console.log('HTTP Server is running on http://localhost:3500');
 });
+
+const httpsServer = https.createServer(options, app).listen(443, () => {
+  console.log('HTTPS Server is running on https://localhost');
+});
+
+
+
