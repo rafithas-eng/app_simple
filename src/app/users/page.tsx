@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Layout from '../components/layout';
+import Header from "@/app/components/header/page";
+import Menu from "@/app/components/menu/page";
+import Content from "@/app/components/content/page";
 
 interface User {
   id: number;
@@ -57,45 +60,49 @@ export default function Users() {
 
   return (
     <Layout>
-      <h1 className="text-2xl font-bold">Users</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <div className="flex justify-between items-center">
-              <div>
-                <strong>Name:</strong> {user.name} <br />
-                <strong>Email:</strong> {user.email} <br />
-                <strong>Bio:</strong> {user.bio}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Bio"
-        value={bio}
-        onChange={(e) => setBio(e.target.value)}
-      />
-      <button onClick={addUser}>Add User</button>
+            <Header />
+            <Menu/>
+            <Content>
+              <h1 className="text-2xl font-bold">Users</h1>
+              <ul>
+                {users.map((user) => (
+                  <li key={user.id}>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <strong>Name:</strong> {user.name} <br />
+                        <strong>Email:</strong> {user.email} <br />
+                        <strong>Bio:</strong> {user.bio}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Bio"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+              <button onClick={addUser}>Add User</button>
+            </Content>
     </Layout>
   );
 }

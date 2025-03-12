@@ -1,12 +1,15 @@
 'use client';
 
 import Layout from './layout';
+import Header from './components/header/page';
+import Menu from './components/menu/page';
 
 export default function Home() {
-  return (
-    <Layout>
-      <h1 className="text-4xl font-bold">Rafa's Card Board</h1>
-      <p className="mt-4">Welcome to Rafa's Card Board. This is a simple model for your home page.</p>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <Header />
+            <Menu/>
+
+        </Layout>
+    );
 }

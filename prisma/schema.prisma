@@ -21,11 +21,22 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   profile   Profile?
+  login     Login?
 }
 
 model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  userId Int     @unique
+  user   User    @relation(fields: [userId], references: [id])
+}
+
+model Login {
   id        Int      @id @default(autoincrement())
-  bio       String?
   userId    Int      @unique
+  email     String
+  password  String
+  message   String
+  timestamp DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
 }
